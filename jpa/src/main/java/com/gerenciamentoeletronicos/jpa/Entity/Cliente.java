@@ -1,10 +1,14 @@
 package com.gerenciamentoeletronicos.jpa.Entity;
 
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Cliente {
@@ -64,5 +68,8 @@ public class Cliente {
 	
 	@Column(nullable = false)
 	private String endereco;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private Set<Venda> vendas;
 
 }
